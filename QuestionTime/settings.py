@@ -37,9 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'django.contrib.sites',
 
     'rest_framework',
     'rest_framework.authtoken',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    'crispy_forms',
+
+    'rest_auth',
+    'rest_auth.registration',
 
     'users'
 ]
@@ -129,4 +140,15 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Custom User Model
 AUTH_USER_MODEL = "users.CustomUser"
+
+# django-crispy-forms
+CRISPY_TEMPLATES_PACK = 'bootstrap4'
+
+# django.contrib.sites
+SITE_ID = 1
+
+# django-all-auth
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_REQUIRED = (True)
