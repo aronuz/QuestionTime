@@ -27,7 +27,7 @@ urlpatterns = [
         success_url="/"
     ), name="django_registration_register"
     ), # custom version of Django registration to create accounts via browser
-    path('accounts/', include("django_registration.backends.one_step")),
+    path('accounts/', include("django_registration.backends.one_step.urls")),
     path('accounts/', include("django.contrib.auth.urls")), # login path via browser
     path('api-auth/', include("rest_framework.urls")), # Login via Browesable api
     path('api/reast-auth/', include("rest_auth.urls")), # via rest
