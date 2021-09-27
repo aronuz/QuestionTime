@@ -162,11 +162,13 @@ ACCOUNT_EMAIL_REQUIRED = (True)
 
 # ~django-rest-framework. Defines how users interact with platform
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATIONCLASSES':(
+    'DEFAULT_AUTHENTICATIONCLASSES': (
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication'
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
-    )
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 2
 }
