@@ -1,4 +1,4 @@
-from rest_framework import serializers, viewsets, generics, status
+from rest_framework import viewsets, generics, status
 from rest_framework.exceptions import ValidationError
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
@@ -11,7 +11,7 @@ from questions.models import Answer, Question
 
 
 class QuestionViewSet(viewsets.ModelViewSet):
-    queryset = Question.objects.all()
+    queryset = Question.objects.all().order_by("-created_at")
     lookup_field = "slug"
     serializer_class = QuestionSerializer
     permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
@@ -35,7 +35,7 @@ class AnswerCreateAPIView(generics.CreateAPIView):
         serializer.save(author=request_user, question=question)
 
 
-class AnswerListAPIView(generics.ListAPIView):
+class AnswerListAPIView(APIView):
     serializer_class = AnswerSerializer
     permission_classes = [IsAuthenticated]
 
@@ -44,7 +44,7 @@ class AnswerListAPIView(generics.ListAPIView):
         return Answer.objects.filter(question__slug=kwarg_slug).order_by("-created_at")
 
 
-class AnswerRUPAPIView(generics.RetrieveUpdateDestroyAPIView):
+class AnswerRUDAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Answer.objects.all()
     serializer_class = AnswerSerializer
     permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
@@ -54,10 +54,10 @@ class AnswerLikeAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = AnswerSerializer
     permission_classes = [IsAuthenticated]
 
-    def delete(self, request, pk=pk):
+    def delete(self, request, pk):
         self.set_like(self, request, pk, False)
 
-    def post(self, request, pk=pk):
+    def post(self, request, pk):
         self.set_like(self, request, pk)
 
     def set_like(self, request, pk, action=True):
