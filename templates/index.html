@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Question Time</title>
-</head>
-<body>
-    <h1>Vue app</h1>
-    <div id="app"></div>
-</body>
-</html>
+{% extends "base.html" %}
+{% load render_bundle from webpack_loader %}
+
+{% block content %}
+<noscript>QuestionTime can't load without JavaScript enabled.</noscript>
+<div id="app"></div>
+{% render_bundle 'app' %}
+{% endblock %}

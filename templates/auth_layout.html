@@ -1,46 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Question Time</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <style>
-        html,
-        body {
-            height: 100%;
-            font-family: sans-serif;
-        }
+{% block style %}
+<style>
+    html,
+    body {
+        height: 100%;
+        font-family: sans-serif;
+    }
 
-        .login-form-container {
-            width: 300px;
-            margin: auto;
-        }
+    .login-form-container {
+        width: 300px;
+        margin: auto;
+    }
 
-        .registration-form-container {
-            width: 400px;
-            margin: auto;
-        }
+    .registration-form-container {
+        width: 400px;
+        margin: auto;
+    }
 
-        .auth_box {
-            margin-top: 100px;
-            border: 3px solid lightgray;
-            border-radius: 5px;
-        }
-    </style>
-</head>
+    .auth_box {
+        margin-top: 100px;
+        border: 3px solid lightgray;
+        border-radius: 5px;
+    }
+</style>
+{% endblock %}
 
-<body>
-    <div class="auth_box text-center">
-        <h1>QuestionTime</h1>
-        <p class="lead text-muted">Knowledge hub</p>
-        {% block auth %}
-        {% endblock %}
-    </div>
-
-</body>
-
-</html>
+{% block content %}
+<div class="auth_box text-center">
+    <h1>QuestionTime</h1>
+    <p class="lead text-muted">Knowledge hub</p>
+    {% block auth %}
+    {% endblock %}
+</div>
+{% endblock %}
